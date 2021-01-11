@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pojo.Request;
 import pojo.Response;
-
 import java.io.*;
 import java.net.Socket;
 
@@ -21,6 +20,7 @@ public class ClientHandler implements Runnable {
 
     public ClientHandler(Socket client) {
         this.client = client;
+        init();
     }
 
     private void init() {

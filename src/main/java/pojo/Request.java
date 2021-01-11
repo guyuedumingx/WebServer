@@ -61,6 +61,24 @@ public class Request {
     }
 
     /**
+     * 获取请求方式
+     */
+    public String getMethod() {
+        return method;
+    }
+
+    /**
+     * 获取请求虚拟路径
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    public Map<String, String> getInfo() {
+        return map;
+    }
+
+    /**
      * 解析请求
      */
     private void handleRequest(String msg) {
@@ -98,10 +116,14 @@ public class Request {
     private void addMethodParameter(String info) {
         String[] s = info.split(" ");
         map.put("Method", s[0]);
+        this.method = s[0];
+
         map.put("Http-Version",s[s.length-1]);
 
         String[] split = s[1].split("\\?");
         map.put("Url-Mapping", split[0]);
+        this.url = split[0];
+
         String[] paras = split[1].split("&");
         for(String para : paras) {
             String[] kv = para.split("=");
