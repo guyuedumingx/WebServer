@@ -12,10 +12,10 @@ import java.util.Scanner;
  * 将传入的请求转化成Request对象
  * @author yohoyes
  */
-public class RequestHandler {
+public class ClientHandler {
     private Socket client = null;
 
-    public RequestHandler(Socket client) {
+    public ClientHandler(Socket client) {
         this.client = client;
     }
 
