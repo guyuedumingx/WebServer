@@ -1,8 +1,8 @@
 package io;
 
+import handle.ClientHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -41,11 +41,14 @@ public class Server {
      * 运行
      */
     public void run() {
+        System.out.println("Server is Running");
         while (true) {
             try {
                 Socket client = ss.accept();
-
+                Thread thread = new Thread(new ClientHandler(client));
+                thread.run();
             }catch (IOException e) {
+                System.out.println("Server closed");
                 logger.error(e.getMessage());
             }
         }
